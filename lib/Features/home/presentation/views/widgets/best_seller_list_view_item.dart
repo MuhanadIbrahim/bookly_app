@@ -1,5 +1,6 @@
 import 'package:bookly_app/Features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:bookly_app/constains.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,11 +35,11 @@ class BestSellerListViewItem extends StatelessWidget {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
-                  child: const Text(
+                  child:  Text(
                     'Harry Potter  and the Goblet of Fire',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Styles.textStyle20,
+                    style: Styles.textStyle20.copyWith(fontFamily: kGtSecrtraFine ),
                   ),
                 ),
                 const SizedBox(
