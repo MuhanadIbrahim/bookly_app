@@ -36,6 +36,9 @@ class _BookDetailViewBodyState extends State<BookDetailViewBody> {
                   style:
                       Styles.textStyle30.copyWith(fontFamily: kGtSecrtraFine),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
                 const Opacity(
                   opacity: 0.7,
                   child: Text(
@@ -43,12 +46,34 @@ class _BookDetailViewBodyState extends State<BookDetailViewBody> {
                     style: Styles.textStyle18,
                   ),
                 ),
-                Align(alignment: Alignment.bottomCenter, child: BookRating())
+                const SizedBox(
+                  height: 19,
+                ),
+                BookRating(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                )
               ],
             ),
           ),
         )
       ],
+    );
+  }
+}
+
+class BookDetailsButtonAction extends StatelessWidget {
+  const BookDetailsButtonAction(
+      {super.key, required this.text, required this.textColor});
+  final String text;
+  final Color textColor;
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Text(
+        text,
+        style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w900),
+      ),
     );
   }
 }
