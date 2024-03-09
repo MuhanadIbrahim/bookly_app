@@ -1,4 +1,11 @@
+import 'package:bookly_app/Features/home/presentation/views/widgets/book_details_appbar.dart';
+import 'package:bookly_app/Features/home/presentation/views/widgets/book_details_image_item.dart';
+import 'package:bookly_app/Features/home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly_app/constains.dart';
+import 'package:bookly_app/core/utils/styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class BookDetailViewBody extends StatefulWidget {
   const BookDetailViewBody({super.key});
@@ -10,6 +17,38 @@ class BookDetailViewBody extends StatefulWidget {
 class _BookDetailViewBodyState extends State<BookDetailViewBody> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Column(
+              children: [
+                const SafeArea(child: SizedBox()),
+                const BookDetailsAppBar(),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.18),
+                  child: const BookDetailsImageItem(),
+                ),
+                Text(
+                  'The Jungle Book',
+                  style:
+                      Styles.textStyle30.copyWith(fontFamily: kGtSecrtraFine),
+                ),
+                const Opacity(
+                  opacity: 0.7,
+                  child: Text(
+                    'Rudyard Kipling',
+                    style: Styles.textStyle18,
+                  ),
+                ),
+                Align(alignment: Alignment.bottomCenter, child: BookRating())
+              ],
+            ),
+          ),
+        )
+      ],
+    );
   }
 }

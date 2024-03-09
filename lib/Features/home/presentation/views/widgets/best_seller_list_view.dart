@@ -1,6 +1,9 @@
-
 import 'package:bookly_app/Features/home/presentation/views/widgets/best_seller_list_view_item.dart';
+import 'package:bookly_app/core/utils/app_router.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class BestSellerListView extends StatelessWidget {
   const BestSellerListView({super.key});
@@ -12,9 +15,13 @@ class BestSellerListView extends StatelessWidget {
         padding: const EdgeInsets.all(0),
         itemCount: 10,
         itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-            child: BestSellerListViewItem(),
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kBookDetailsView);
+                },
+                child: const BestSellerListViewItem()),
           );
         });
   }
