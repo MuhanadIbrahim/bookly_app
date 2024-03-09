@@ -51,7 +51,11 @@ class _BookDetailViewBodyState extends State<BookDetailViewBody> {
                 ),
                 BookRating(
                   mainAxisAlignment: MainAxisAlignment.center,
-                )
+                ),
+                const SizedBox(
+                  height: 35,
+                ),
+                const BookAction()
               ],
             ),
           ),
@@ -61,18 +65,63 @@ class _BookDetailViewBodyState extends State<BookDetailViewBody> {
   }
 }
 
-class BookDetailsButtonAction extends StatelessWidget {
-  const BookDetailsButtonAction(
-      {super.key, required this.text, required this.textColor});
-  final String text;
-  final Color textColor;
+class BookAction extends StatelessWidget {
+  const BookAction({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {},
-      child: Text(
-        text,
-        style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w900),
+    return const Row(
+      children: [
+        Expanded(
+          child: BookDetailsButtonAction(
+            text: '19.99€',
+            textColor: Colors.black,
+            backgroundColor: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
+          ),
+        ),
+        Expanded(
+          child: BookDetailsButtonAction(
+            text: 'Free preview',
+            textColor: Colors.white,
+            backgroundColor: Color(0xffEF8262),
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(12),
+                bottomRight: Radius.circular(12)),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class BookDetailsButtonAction extends StatelessWidget {
+  const BookDetailsButtonAction(
+      {super.key,
+      required this.text,
+      required this.textColor,
+      required this.backgroundColor,
+      this.borderRadius});
+  final String text;
+  final Color textColor;
+  final Color backgroundColor;
+  final BorderRadiusGeometry? borderRadius;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 48,
+      child: TextButton(
+        onPressed: () {},
+        style: TextButton.styleFrom(
+            backgroundColor: backgroundColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: borderRadius ?? BorderRadius.circular(12))),
+        child: Text(
+          text,
+          style: Styles.textStyle16
+              .copyWith(fontWeight: FontWeight.w900, color: textColor),
+        ),
       ),
     );
   }
