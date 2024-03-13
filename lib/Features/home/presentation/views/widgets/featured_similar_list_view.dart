@@ -13,7 +13,7 @@ class FeaturedSmiliaListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.symmetric(horizontal: 5.0),
-            child: FeaturedListViewItem(),
+            child: FeaturedListViewItem(imageUrl: 'https://cdn.vectorstock.com/i/preview-1x/29/32/blank-book-with-white-cover-template-vector-33312932.jpg',),
           );
         },
       ),
