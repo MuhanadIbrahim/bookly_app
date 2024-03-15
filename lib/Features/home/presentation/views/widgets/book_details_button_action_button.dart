@@ -1,5 +1,7 @@
+import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsButtonAction extends StatelessWidget {
   const BookDetailsButtonAction(
@@ -7,18 +9,28 @@ class BookDetailsButtonAction extends StatelessWidget {
       required this.text,
       required this.textColor,
       required this.backgroundColor,
-      this.borderRadius, this.onPressed});
+      this.borderRadius,
+      this.onPressed,
+      required this.bookModel});
   final String text;
   final Color textColor;
   final Color backgroundColor;
   final BorderRadiusGeometry? borderRadius;
   final void Function()? onPressed;
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 48,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () async {
+          Uri uri = Uri.parse(bookModel.volumeInfo!.previewLink!);
+          if (await canLaunchUrl(uri)) {
+            await launchUrl(uri);
+          } else {
+            throw 'Could not launch $uri';
+          }
+        },
         style: TextButton.styleFrom(
             backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(

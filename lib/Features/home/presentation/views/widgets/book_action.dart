@@ -10,22 +10,31 @@ class BookAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: BookDetailsButtonAction(
+            bookModel: bookmodel,
             text: 'Free',
             textColor: Colors.black,
             backgroundColor: Colors.white,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
           ),
         ),
         Expanded(
           child: BookDetailsButtonAction(
+            bookModel: bookmodel,
             onPressed: () async {
               Uri uri = Uri.parse(bookmodel.volumeInfo!.previewLink!);
               if (await canLaunchUrl(uri)) {
                 await launchUrl(uri);
+              } else {
+                throw 'Could not launch $uri';
               }
+              // if (await canLaunchUrl(uri)) {
+              //   await launchUrl(uri);
+              // } else {
+              //   ScaffoldMessenger(child: Text('sdsds'));
+              // }
             },
             text: 'Free preview',
             textColor: Colors.white,
