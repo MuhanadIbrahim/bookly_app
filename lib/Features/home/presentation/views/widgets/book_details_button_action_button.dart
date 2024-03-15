@@ -7,11 +7,12 @@ class BookDetailsButtonAction extends StatelessWidget {
       required this.text,
       required this.textColor,
       required this.backgroundColor,
-      this.borderRadius});
+      this.borderRadius, this.onPressed});
   final String text;
   final Color textColor;
   final Color backgroundColor;
   final BorderRadiusGeometry? borderRadius;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(

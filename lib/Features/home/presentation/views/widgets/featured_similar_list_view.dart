@@ -1,13 +1,16 @@
+import 'package:bookly_app/Features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Features/home/presentation/manger/similar_books_cubit/similar_bokks_cubit.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/custom_list_view_item.dart';
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/utils/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class FeaturedSmiliaListView extends StatelessWidget {
-  const FeaturedSmiliaListView({super.key});
-
+  const FeaturedSmiliaListView({super.key, required this.bookmodel});
+  final BookModel bookmodel;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SimilarBokksCubit, SimilarBokksState>(
@@ -16,13 +19,22 @@ class FeaturedSmiliaListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.14,
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.0),
-                  child: FeaturedListViewItem(
-                    imageUrl:
-                        'https://cdn.vectorstock.com/i/preview-1x/29/32/blank-book-with-white-cover-template-vector-33312932.jpg',
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                          extra: state.books[index]);
+                    },
+                    child: FeaturedListViewItem(
+                      imageUrl: state
+                              .books[index].volumeInfo!.imageLinks!.thumbnail ??
+                          'https://cdn.vectorstock.com/i/preview-1x/29/32/blank-book-with-white-cover-template-vector-33312932.jpg',
+                    ),
                   ),
                 );
               },

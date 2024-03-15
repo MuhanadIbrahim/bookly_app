@@ -33,7 +33,7 @@ class _BookDetailViewBodyState extends State<BookDetailViewBody> {
                     height: 40,
                   ),
                 ),
-               const SmilarBookSection(),
+                SmilarBookSection(bookModel: widget.bookmodel,),
               const  SizedBox(
                   height: 15,
                 )
