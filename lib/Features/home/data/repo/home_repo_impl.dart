@@ -52,12 +52,13 @@ class HomeRepoImpl extends HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String categories}) async{
-     try {
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String categories}) async {
+    try {
       var data = await apiService.get(
-          endPoint: 'volumes?Filtering=free-ebooks&Sorting=relevance&q=subject:Novels');
+          endPoint: 'volumes?Filtering=free-ebooks&Sorting=relevance&q=Novels');
       List<BookModel> books = [];
 
       for (var item in data['items']) {
