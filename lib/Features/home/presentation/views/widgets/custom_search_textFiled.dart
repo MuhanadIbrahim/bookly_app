@@ -14,7 +14,7 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (value) {
+      onSubmitted: (value) {
         setState(() {
           if (value.isNotEmpty) {
             BlocProvider.of<SearchBookCubit>(context)

@@ -17,8 +17,8 @@ class BestSellerListViewItem extends StatelessWidget {
           AspectRatio(
             aspectRatio: 2.5 / 4,
             child: CachedNetworkImage(
-              imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail ??
-                  'https://cdn.vectorstock.com/i/preview-1x/29/32/blank-book-with-white-cover-template-vector-33312932.jpg',
+              imageUrl: bookModel.volumeInfo!.imageLinks?.thumbnail ??
+                  'https://m.media-amazon.com/images/I/41uBiV7bx5L._SY466_.jpg',
               placeholder: (context, url) =>
                   const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -47,6 +47,8 @@ class BestSellerListViewItem extends StatelessWidget {
                 Text(
                   bookModel.volumeInfo!.authors![0],
                   style: Styles.textStyle14,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(
                   height: 3,
