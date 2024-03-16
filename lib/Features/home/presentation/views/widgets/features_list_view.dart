@@ -31,8 +31,8 @@ class FeaturedBooksListView extends StatelessWidget {
                     ),
                     child: FeaturedListViewItem(
                       imageUrl: state
-                              .books[index].volumeInfo!.imageLinks!.thumbnail ??
-                          'https://cdn.vectorstock.com/i/preview-1x/29/32/blank-book-with-white-cover-template-vector-33312932.jpg',
+                              .books[index].volumeInfo!.imageLinks?.thumbnail ??
+                          'https://m.media-amazon.com/images/I/41uBiV7bx5L._SY466_.jpg',
                     ),
                   ),
                 );
