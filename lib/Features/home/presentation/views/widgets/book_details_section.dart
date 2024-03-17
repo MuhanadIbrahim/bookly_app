@@ -23,7 +23,7 @@ class BookDetailsSection extends StatelessWidget {
         Center(
           child: Text(
             textAlign: TextAlign.center,
-            bookmodel.volumeInfo!.title!,
+            bookmodel.volumeInfo?.title ?? 'No title',
             style: Styles.textStyle30.copyWith(fontFamily: kGtSecrtraFine),
           ),
         ),
@@ -35,7 +35,7 @@ class BookDetailsSection extends StatelessWidget {
           child: Center(
             child: Text(
               textAlign: TextAlign.center,
-              bookmodel.volumeInfo!.authors![0],
+              bookmodel.volumeInfo?.authors?[0] ?? 'Unknown Author',
               style: Styles.textStyle18,
             ),
           ),
@@ -51,7 +51,9 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 35,
         ),
-         BookAction(bookmodel: bookmodel,)
+        BookAction(
+          bookmodel: bookmodel,
+        )
       ],
     );
   }

@@ -25,7 +25,7 @@ class BookDetailsButtonAction extends StatelessWidget {
       height: 48,
       child: TextButton(
         onPressed: () {
-          launchCustomUrl(context, bookModel.volumeInfo!.previewLink!);
+          launchCustomUrl(context, bookModel.volumeInfo?.previewLink ?? '');
         },
         style: TextButton.styleFrom(
             backgroundColor: backgroundColor,

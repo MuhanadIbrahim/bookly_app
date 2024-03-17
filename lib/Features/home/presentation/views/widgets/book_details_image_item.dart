@@ -11,13 +11,13 @@ class BookDetailsImageItem extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 2.6 / 4,
       child: CachedNetworkImage(
-        
-          fit: BoxFit.fill,
-          imageUrl: bookmodel.volumeInfo!.imageLinks?.thumbnail?? '',
-          placeholder: (context, url) =>
-              const Center(child: CircularProgressIndicator()),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-        ),
+        fit: BoxFit.fill,
+        imageUrl: bookmodel.volumeInfo?.imageLinks?.thumbnail ??
+            'https://i.pinimg.com/originals/cb/b9/d2/cbb9d2fed961f53a77a5d1b3ec33f104.jpg',
+        placeholder: (context, url) =>
+            const Center(child: CircularProgressIndicator()),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
+      ),
     );
   }
 }
