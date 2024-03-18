@@ -17,24 +17,29 @@ class BookDetailViewBody extends StatefulWidget {
 class _BookDetailViewBodyState extends State<BookDetailViewBody> {
   @override
   Widget build(BuildContext context) {
-    return  CustomScrollView(
+    return CustomScrollView(
       slivers: [
         SliverFillRemaining(
           hasScrollBody: false,
-          child: Padding(
-            padding:const EdgeInsets.symmetric(horizontal: 30.0),
+          child: 
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
               children: [
-              const  SafeArea(child: SizedBox()),
-               const BookDetailsAppBar(),
-                BookDetailsSection(bookmodel: widget.bookmodel,),
-               const Expanded(
+                const SafeArea(child: SizedBox()),
+                const BookDetailsAppBar(),
+                BookDetailsSection(
+                  bookmodel: widget.bookmodel,
+                ),
+                const Expanded(
                   child: SizedBox(
                     height: 40,
                   ),
                 ),
-                SmilarBookSection(bookModel: widget.bookmodel,),
-              const  SizedBox(
+                SmilarBookSection(
+                  bookModel: widget.bookmodel,
+                ),
+                const SizedBox(
                   height: 15,
                 )
               ],

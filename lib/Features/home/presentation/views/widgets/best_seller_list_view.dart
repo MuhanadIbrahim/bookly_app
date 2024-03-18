@@ -17,28 +17,29 @@ class BestSellerListView extends StatelessWidget {
     return BlocBuilder<NewsetBooksCubit, NewsetBooksState>(
       builder: (context, state) {
         if (state is NewsetBooksSuccess) {
-          return ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.zero,
-              itemCount: state.books.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: GestureDetector(
-                      onTap: () {
-                        GoRouter.of(context).push(AppRouter.kBookDetailsView,
-                            extra: state.books[index]);
-                      },
+          return SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: state.books.length,
+              (context, index) {
+                return GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                          extra: state.books[index]);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       child: BestSellerListViewItem(
                         bookModel: state.books[index],
-                      )),
-                );
-              });
+                      ),
+                    ));
+              },
+            ),
+          );
         } else if (state is NewsetBooksFailure) {
-          return CustomErrorWidget(errMessage: state.errMessage);
+          return SliverToBoxAdapter(
+              child: CustomErrorWidget(errMessage: state.errMessage));
         } else {
-          return const CustomLoadingIndicator();
+          return const SliverToBoxAdapter(child: CustomLoadingIndicator());
         }
       },
     );

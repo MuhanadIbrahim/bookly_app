@@ -11,7 +11,7 @@ class SimilarBokksCubit extends Cubit<SimilarBokksState> {
   final HomeRepo homeRepo;
   Future<void> fetchSimilarBooks({required String categories}) async {
     emit(SimilarBokksLoading());
-    var result = await homeRepo.fetchSimilarBooks(categories:categories );
+    var result = await homeRepo.fetchSimilarBooks(categories: categories);
     result.fold(
       (failure) {
         emit(SimilarBokksFailure(erroMessage: failure.errMessage));

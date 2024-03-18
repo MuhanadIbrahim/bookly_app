@@ -32,7 +32,7 @@ class FeaturedSmiliaListView extends StatelessWidget {
                     },
                     child: FeaturedListViewItem(
                       imageUrl: state
-                              .books[index].volumeInfo!.imageLinks?.thumbnail ??
+                              .books[index].volumeInfo?.imageLinks?.thumbnail ??
                           'https://i.pinimg.com/originals/cb/b9/d2/cbb9d2fed961f53a77a5d1b3ec33f104.jpg',
                     ),
                   ),

@@ -24,7 +24,8 @@ class BookAction extends StatelessWidget {
           child: BookDetailsButtonAction(
             bookModel: bookmodel,
             onPressed: () async {
-              launchCustomUrl(context, bookmodel.volumeInfo?.previewLink ?? '');
+              await launchCustomUrl(
+                  context, bookmodel.volumeInfo?.previewLink ?? '');
               // if (await canLaunchUrl(uri)) {
               //   await launchUrl(uri);
               // } else {
@@ -44,7 +45,7 @@ class BookAction extends StatelessWidget {
   }
 
   String getText({required BookModel bookModel}) {
-    if (bookModel.volumeInfo!.previewLink == null) {
+    if (bookModel.volumeInfo?.previewLink == null) {
       return 'Not Avaliable';
     } else {
       return 'Free preview';
