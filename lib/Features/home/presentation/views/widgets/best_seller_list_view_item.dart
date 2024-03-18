@@ -34,7 +34,7 @@ class BestSellerListViewItem extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
-                    bookModel.volumeInfo!.title!,
+                    bookModel.volumeInfo!.title ?? 'No title available',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style:
@@ -45,7 +45,7 @@ class BestSellerListViewItem extends StatelessWidget {
                   height: 3,
                 ),
                 Text(
-                  bookModel.volumeInfo!.authors![0],
+                  bookModel.volumeInfo!.authors?[0] ?? 'Unknown Author',
                   style: Styles.textStyle14,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
